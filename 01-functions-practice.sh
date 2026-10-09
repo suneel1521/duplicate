@@ -12,18 +12,18 @@ fi
 
 VALIDATE(){
 
-    if [ $? -eq 0 ]
+    if [ $1 -eq 0 ]
     then
-       echo "installing $1 is.....success"
+       echo "installing $2 is.....success"
     else
-       echo "installing $1 is....failure"
+       echo "installing $2 is....failure"
        exit 1
     fi
 }
 
 dnf list installed mysql
 
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
 then
    echo "mysql is not installed....going to be installed"
    dnf install mysql -y
