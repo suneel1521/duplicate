@@ -2,12 +2,12 @@
 
 USERID=$(id -u)
 
-R="e\[31m"
-G="e\[31m"
-Y="e\[31m"
-B="e\[31m"
-M="e\[31m"
-N="e\[0m"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+B="\e[34m"
+M="\e[35m"
+N="\e[0m"
 
 VALIDATE(){
 
