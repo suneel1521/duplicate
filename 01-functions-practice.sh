@@ -13,9 +13,10 @@ VALIDATE(){
 
    if [ $1 -eq 0 ]
    then
-      echo -e " $G installing nginx.....success $N "
+      echo -e " $G installing $2 .....success $N "
    else
-      echo -e " $R installing nginx.....failure $N "
+      echo -e " $R installing $2 .....failure $N "
+      exit 1
    fi   
 }
 
@@ -35,4 +36,14 @@ then
    VALIDATE $? "nginx"
 else
    echo -e " $Y nginx is already installed $N "
+fi
+
+dnf list installed python
+if [ $? -eq 0 ]
+then
+   echo -e " $M python is not installed.....going to install $N "
+   dnf install python -y
+   VALIDATE $? "python"
+else
+   echo " $Y pythone is already installed $N "
 fi
