@@ -9,9 +9,9 @@ N="\e[0m"
 
 LOG_FOLDER=/var/log/shell_log
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME"
+LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
-mkdir -p shell_log
+mkdir -p $LOG_FOLDER
 
 USERID=$(id -u)
 
@@ -37,7 +37,7 @@ PACKAGES=("nginx" "python" "mysql" "httpd")
 for package in "${PACKAGES[@]}"
 do
   dnf list installed $package &>> "$LOG_FILE"
-  if [ $? -eq 0 ]
+  if [ $? -ne 0 ]
   then
       echo -e " $M $package is not installed going to install $N" | tee -a "$LOG_FILE"
 	  dnf install $package -y &>> "$LOG_FILE"
