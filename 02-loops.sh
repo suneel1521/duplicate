@@ -41,7 +41,7 @@ do
   then
       echo -e " $M $package is not installed going to install $N" | tee -a "$LOG_FILE"
 	  dnf install $package -y &>> "$LOG_FILE"
-	  VALIDATE $? "package"
+	  VALIDATE $? "$package"
   else
       echo -e " $Y $package is already installed $N" | tee -a "$LOG_FILE"
   fi
